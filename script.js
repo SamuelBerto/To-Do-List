@@ -21,9 +21,63 @@ function adcionarTarefa() {
 
     tarefas.push({ texto: input.value, concluida: false });
 
-}
+
 input.value = '';
 salvar();
-renderizarTarefas();
+renderizar();
+}
 
-function renderizarTarefas() {}
+function renderizar() {
+    lista.innerHTML = '';
+     
+    let tarefasFiltradas = tarefas.filter (t =>{
+        if (filtroAtual === 'ativas') return !t.concluida;
+        if (filtroAtual === 'concluidas') return t.concluida;
+        return true;
+    });
+
+    tarefasFiltradas.forEach((tarefa, index)) => {
+        const li =document.createElement('li');
+
+        li.innerHTML = `
+         <span class="${tarefa.concluida ? 'concluida' : ''}">${tarefa.texto}</span>
+         <button onclick="removerTarefa(${index})">x</button>
+         `;
+
+         li.querySelector("span").onclick =() => {
+            tarefa.concluida = !tarefa.concluida;
+            salvar();
+            renderizar();
+         };
+
+         lista.appendChild(li);
+
+        });
+
+        atualizarContador();
+    }
+    
+    function removerTarefa(index) {
+        tarefas.splice(index, 1);
+        salvar();
+        renderizar();
+    }
+
+    function filtrar(tipo){
+        filtroAtual = tipo;
+        renderizar();  
+    }
+
+    function limparConcluidas() {
+        tarefas = tarefas.filter (t => !t.concluida);
+        salvar();
+        renderizar();
+    }
+    function atualizarContador() {
+        const restantes = tarefas.filter(t => !t.concluida).length;
+        contador.textContent = `${restantes} tarefas restantes`;
+    }
+
+renderizar();
+
+
