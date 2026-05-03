@@ -41,12 +41,37 @@ function renderizar() {
     </span>
     <button class="remover">x</button>
 `;
-        li.onclick = () => {
+li.onclick = (e) => {
+    if (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT") return;
+
     tarefa.concluida = !tarefa.concluida;
     salvar();
     renderizar();
 };
+li.ondblclick = () => {
+    const inputEdit = document.createElement("input");
+    inputEdit.type = "text";
+    inputEdit.value = tarefa.texto;
 
+    li.innerHTML = "";
+    li.appendChild(inputEdit);
+
+    inputEdit.focus();
+
+    // salvar ao pressionar Enter
+    inputEdit.onkeypress = (e) => {
+        if (e.key === "Enter") {
+            tarefa.texto = inputEdit.value;
+            salvar();
+            renderizar();
+        }
+    };
+
+    // cancelar ao sair do campo
+    inputEdit.onblur = () => {
+        renderizar();
+    };
+};
 li.querySelector(".remover").onclick = (e) => {
     e.stopPropagation(); 
     removerTarefa(indexReal);
