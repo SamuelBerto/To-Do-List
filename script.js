@@ -67,10 +67,13 @@ function atualizarContador() {
     contador.textContent = `${restantes} tarefas restantes`;
 }
 function limparTudo() {
-    tarefas = [];
-    salvar();
-    renderizar();
+    if (confirm("Tem certeza que deseja apagar tudo?")) {
+        tarefas = [];
+        salvar();
+        renderizar();
+    }
 }
+
 
 renderizar();
 
