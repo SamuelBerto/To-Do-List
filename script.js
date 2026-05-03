@@ -61,17 +61,16 @@ function removerTarefa(index) {
     salvar();
     renderizar();
 }
-function limparConcluidas() {
-    console.log("clicou limpar"); 
-    tarefas = tarefas.filter(t => !t.concluida);
-    salvar();
-    renderizar();
-}
+
 function atualizarContador() {
     const restantes = tarefas.filter(t => !t.concluida).length;
     contador.textContent = `${restantes} tarefas restantes`;
 }
-
+function limparTudo() {
+    tarefas = [];
+    salvar();
+    renderizar();
+}
 
 renderizar();
 
