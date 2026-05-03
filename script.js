@@ -37,15 +37,14 @@ function renderizar() {
     tarefasFiltradas.forEach((tarefa) => {
         const indexReal = tarefas.indexOf(tarefa);
 
-        const li = document.createElement('li'); // 🔥 FALTAVA ISSO
+        const li = document.createElement('li'); 
 
         li.innerHTML = `
-        <span class="${tarefa.concluida ? 'concluida' : ''}">
-            ${tarefa.texto}
-        </span>
-        <button onclick="removerTarefa(${indexReal})">x</button>
-    `;
-
+    <span>
+        ${tarefa.concluida ? '✔️ ' : ''}${tarefa.texto}
+    </span>
+    <button onclick="removerTarefa(${indexReal})">x</button>
+`;
         li.querySelector("span").onclick = () => {
             tarefa.concluida = !tarefa.concluida;
             salvar();
