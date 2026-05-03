@@ -36,17 +36,21 @@ function renderizar() {
         const li = document.createElement('li'); 
 
      li.innerHTML = `
-    <span class="tarefa ${tarefa.concluida ? 'done' : ''}">
-        <span class="check">${tarefa.concluida ? '✔' : ''}</span>
-        ${tarefa.texto}
+    <span>
+        ${tarefa.concluida ? '✔️ ' : ''}${tarefa.texto}
     </span>
-    <button onclick="removerTarefa(${indexReal})">x</button>
+    <button class="remover">x</button>
 `;
-        li.querySelector("span").onclick = () => {
-            tarefa.concluida = !tarefa.concluida;
-            salvar();
-            renderizar();
-        };
+        li.onclick = () => {
+    tarefa.concluida = !tarefa.concluida;
+    salvar();
+    renderizar();
+};
+
+li.querySelector(".remover").onclick = (e) => {
+    e.stopPropagation(); 
+    removerTarefa(indexReal);
+};
 
         lista.appendChild(li);
     });
