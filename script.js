@@ -1,5 +1,5 @@
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-
+let clickTimer = null; // 🔥 ISSO FALTAVA
 
 const input = document.getElementById("inputTarefa");
 const lista = document.getElementById('listaTarefas');
@@ -41,14 +41,31 @@ function renderizar() {
     </span>
     <button class="remover">x</button>
 `;
+
+// ✔ CLIQUE (concluir)
+
 li.onclick = (e) => {
     if (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT") return;
 
-    tarefa.concluida = !tarefa.concluida;
-    salvar();
-    renderizar();
+    if (clickTimer !== null) return;
+
+    clickTimer = setTimeout(() => {
+        tarefa.concluida = !tarefa.concluida;
+        salvar();
+        renderizar();
+        clickTimer = null;
+    }, 200);
 };
-li.ondblclick = () => {
+
+
+//// ✏️ DUPLO CLIQUE (editar)
+
+li.ondblclick = (e) => {
+    e.stopPropagation(); // 🔥 impede conflito
+
+    clearTimeout(clickTimer);
+    clickTimer = null;
+
     const inputEdit = document.createElement("input");
     inputEdit.type = "text";
     inputEdit.value = tarefa.texto;
@@ -58,7 +75,6 @@ li.ondblclick = () => {
 
     inputEdit.focus();
 
-    // salvar ao pressionar Enter
     inputEdit.onkeypress = (e) => {
         if (e.key === "Enter") {
             tarefa.texto = inputEdit.value;
@@ -67,11 +83,13 @@ li.ondblclick = () => {
         }
     };
 
-    // cancelar ao sair do campo
     inputEdit.onblur = () => {
         renderizar();
     };
 };
+
+//remover tarefa
+
 li.querySelector(".remover").onclick = (e) => {
     e.stopPropagation(); 
     removerTarefa(indexReal);
