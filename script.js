@@ -1,5 +1,5 @@
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-let filtroAtual = 'todas';
+
 
 const input = document.getElementById("inputTarefa");
 const lista = document.getElementById('listaTarefas');
@@ -28,11 +28,7 @@ function adicionarTarefa() {
 function renderizar() {
     lista.innerHTML = '';
 
-    let tarefasFiltradas = tarefas.filter(t => {
-        if (filtroAtual === 'ativas') return !t.concluida;
-        if (filtroAtual === 'concluidas') return t.concluida;
-        return true;
-    });
+    let tarefasFiltradas = tarefas;
 
     tarefasFiltradas.forEach((tarefa) => {
         const indexReal = tarefas.indexOf(tarefa);
@@ -65,13 +61,8 @@ function removerTarefa(index) {
     salvar();
     renderizar();
 }
-
-function filtrar(tipo) {
-    filtroAtual = tipo;
-    renderizar();
-}
-
 function limparConcluidas() {
+    console.log("clicou limpar"); 
     tarefas = tarefas.filter(t => !t.concluida);
     salvar();
     renderizar();
