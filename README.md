@@ -2,7 +2,7 @@
 
 Um aplicativo simples e moderno de lista de tarefas desenvolvido com **HTML, CSS e JavaScript**.
 
-## 📸 Preview
+## 📹 Preview
 <img width="1008" height="607" alt="TASKFLOW" src="https://github.com/user-attachments/assets/e61c9d9d-471a-4779-b8ec-45b119eb4c9d" />
 
 
