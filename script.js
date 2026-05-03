@@ -39,9 +39,10 @@ function renderizar() {
 
         const li = document.createElement('li'); 
 
-        li.innerHTML = `
-    <span>
-        ${tarefa.concluida ? '✔️ ' : ''}${tarefa.texto}
+     li.innerHTML = `
+    <span class="tarefa ${tarefa.concluida ? 'done' : ''}">
+        <span class="check">${tarefa.concluida ? '✔' : ''}</span>
+        ${tarefa.texto}
     </span>
     <button onclick="removerTarefa(${indexReal})">x</button>
 `;
