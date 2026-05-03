@@ -1,6 +1,6 @@
-# 🚀 TaskFlow - Minhas Tarefas
+# 🚀 TaskFlow - My tasks
 
-Um aplicativo simples e moderno de lista de tarefas desenvolvido com **HTML, CSS e JavaScript**.
+A simple and modern to-do list app developed with **HTML, CSS e JavaScript**.
 
 ## 📹 Preview
 <img width="1008" height="607" alt="TASKFLOW" src="https://github.com/user-attachments/assets/e61c9d9d-471a-4779-b8ec-45b119eb4c9d" />
@@ -11,35 +11,33 @@ Um aplicativo simples e moderno de lista de tarefas desenvolvido com **HTML, CSS
 
 
 
-## ✨ Funcionalidades
+## ✨ Features
 
-* ✔ Adicionar tarefas
-* ✔ Marcar como concluída
-* ✔ Editar tarefas (duplo clique)
-* ✔ Remover tarefas
-* ✔ Contador de tarefas restantes
-* ✔ Limpar todas as tarefas
-* ✔ Salvamento automático no navegador (LocalStorage)
+* ✔ Add tasks
+* ✔ Mark as completed
+* ✔ Edit tasks (double-click)
+* ✔ Remove tasks
+* ✔ Remaining tasks counter
+* ✔ Clear all tasks
+* ✔ Automatic saving to browser (LocalStorage)
 
-## 🛠️ Tecnologias utilizadas
-
+## 🛠️ Technologies used
 * HTML5
 * CSS3
 * JavaScript
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Este projeto foi criado para praticar lógica de programação, manipulação do DOM e criação de interfaces interativas.
-
-
-
-## 📈 Melhorias futuras
-
-* [ ] Tema dark/light
-* [ ] Barra de progresso
+This project was created to practice programming logic, DOM manipulation, and the creation of interactive interfaces.
 
 
-## 👨‍💻 Autor
+
+## 📈 Future improvements
+
+* [ ] Dark/Light Theme Selection
+* [ ] Progress Bar
+
+## 👨‍💻 Author
 
 [Acesse meu GitHub](https://github.com/SamuelBerto)
 
